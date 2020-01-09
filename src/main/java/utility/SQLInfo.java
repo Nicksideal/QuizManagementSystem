@@ -1,9 +1,7 @@
 package utility;
 
 public class SQLInfo {
-	private static String URL = "jdbc:oracle:thin:@oraclebd-1.cxc7vkrsynje.us-east-1.rds.amazonaws.com";
-	private static String username ="Quizzer";
-	private static String password = "pass";
+	
 	public SQLInfo() {
 		super();
 		// TODO Auto-generated constructor stub
