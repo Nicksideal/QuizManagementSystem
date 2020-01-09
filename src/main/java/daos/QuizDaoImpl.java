@@ -1,13 +1,31 @@
 package daos;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import models.Quiz;
+import utility.ConnectionsUtil;
+import utility.MagicWords;
 
 public class QuizDaoImpl implements QuizDao{
 
 	@Override
 	public void CreateQuiz(int quiz_id, String name, int created_by) {
-		// TODO Auto-generated method stub
-		
+		try (Connection c = ConnectionsUtil.getConnection()){
+			PreparedStatement stmt = c.prepareCall(MagicWords.LOGIN_QUERY);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				return extractUser(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
