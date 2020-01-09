@@ -9,6 +9,7 @@ public class Quiz {
 	private String answer_b;
 	private String answer_c;
 	private String answer_d;
+	private String answer;
 	private int quiz_question_id;
 	private String quiz;
 	public Quiz() {
@@ -16,7 +17,7 @@ public class Quiz {
 		// TODO Auto-generated constructor stub
 	}
 	public Quiz(int quiz_id, String name, int created_by, int question_answer_id, String answer_a, String answer_b,
-			String answer_c, String answer_d, int quiz_question_id, String quiz) {
+			String answer_c, String answer_d, String answer, int quiz_question_id, String quiz) {
 		super();
 		this.quiz_id = quiz_id;
 		this.name = name;
@@ -26,6 +27,7 @@ public class Quiz {
 		this.answer_b = answer_b;
 		this.answer_c = answer_c;
 		this.answer_d = answer_d;
+		this.answer = answer;
 		this.quiz_question_id = quiz_question_id;
 		this.quiz = quiz;
 	}
@@ -33,6 +35,7 @@ public class Quiz {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
 		result = prime * result + ((answer_a == null) ? 0 : answer_a.hashCode());
 		result = prime * result + ((answer_b == null) ? 0 : answer_b.hashCode());
 		result = prime * result + ((answer_c == null) ? 0 : answer_c.hashCode());
@@ -54,6 +57,11 @@ public class Quiz {
 		if (getClass() != obj.getClass())
 			return false;
 		Quiz other = (Quiz) obj;
+		if (answer == null) {
+			if (other.answer != null)
+				return false;
+		} else if (!answer.equals(other.answer))
+			return false;
 		if (answer_a == null) {
 			if (other.answer_a != null)
 				return false;
@@ -142,6 +150,12 @@ public class Quiz {
 	public void setAnswer_d(String answer_d) {
 		this.answer_d = answer_d;
 	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 	public int getQuiz_question_id() {
 		return quiz_question_id;
 	}
@@ -158,7 +172,10 @@ public class Quiz {
 	public String toString() {
 		return "Quiz [quiz_id=" + quiz_id + ", name=" + name + ", created_by=" + created_by + ", question_answer_id="
 				+ question_answer_id + ", answer_a=" + answer_a + ", answer_b=" + answer_b + ", answer_c=" + answer_c
-				+ ", answer_d=" + answer_d + ", quiz_question_id=" + quiz_question_id + ", quiz=" + quiz + "]";
+				+ ", answer_d=" + answer_d + ", answer=" + answer + ", quiz_question_id=" + quiz_question_id + ", quiz="
+				+ quiz + "]";
 	}
+	
+	
 }
 
