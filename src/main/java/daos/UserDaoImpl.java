@@ -34,6 +34,9 @@ public class UserDaoImpl implements UserDao{
 		return null;
 	}
 
+	public static UserDao getInstance() {
+		return instance;
+	}
 	
 
 }

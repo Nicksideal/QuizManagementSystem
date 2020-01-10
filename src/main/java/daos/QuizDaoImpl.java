@@ -13,8 +13,10 @@ public class QuizDaoImpl implements QuizDao{
 	
 	private static QuizDao instance = new QuizDaoImpl();
 	
-	private Quiz extractQuiz(ResultSet rs) {
-		return new Quiz(rs.getInt("quiz_id"), rs.getString("name"), 0, 0, null, null, null, null, null, 0, null);
+	private Quiz extractQuiz(ResultSet rs) throws SQLException {
+		return new Quiz(rs.getInt("quiz_id"), rs.getString("name"), rs.getInt("created_by"), rs.getInt("question_answer_id"), 
+				rs.getString("answer_a"), rs.getString("answer_b"), rs.getString("answer_c"), rs.getString("answer_d"), 
+				rs.getString("answer"), rs.getInt("quiz_question_id"), rs.getString("quiz"));
 	}
 
 	@Override
@@ -80,4 +82,5 @@ public class QuizDaoImpl implements QuizDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
 }
